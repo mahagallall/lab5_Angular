@@ -1,0 +1,54 @@
+/* Enhanced Navbar */
+.navbar {
+  background: linear-gradient(90deg, #cfc97f, #5e5d3d);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem 1.5rem;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #ffffff !important;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #9a9508 !important;
+}
+
+.nav-link {
+  color: #f8f9fa !important;
+  font-size: 1.05rem;
+  margin: 0 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #d4af37 !important;
+  transform: translateY(-1px);
+}
+
+/* Active page styling */
+.nav-link.active {
+  color: #fffde7 !important;
+  font-weight: bold;
+  border-bottom: 2px solid #ffee58;
+  padding-bottom: 0.25rem;
+}
+
+.dropdown-menu {
+  background-color: #2b2b2b;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-top: 0.5rem;
+}
+
+.dropdown-item {
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.dropdown-item:hover {
+  background-color: #404040;
+  color: #ffd700;
+}
