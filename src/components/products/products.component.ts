@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy,OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { StaticProductServiceService } from '../../app/services/static-product-service.service';
+import { DynamicProductService } from '../../app/services/dynamic-product.service';
+import { Subscription } from 'rxjs'
 import { IProduct } from '../../app/models/iproduct';
 
 @Component({
@@ -10,16 +11,41 @@ import { IProduct } from '../../app/models/iproduct';
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
-export class ProductsComponent implements OnInit{
+export class ProductsComponent implements OnInit,OnDestroy{
   products!:IProduct[];
-  constructor (private productService:StaticProductServiceService){}
+  mySub1!:Subscription[];
+  constructor (private productService:DynamicProductService){}
+
   ngOnInit(): void {
-    this.products = this.productService.getAllProducts();
+    this.mySub1.push(this.productService.getAllProducts().subscribe({
+      next:(res)=>{
+        this.products=res;
+        console.log(res)
+      },
+      error:(err)=>{
+        console.log(err)
+      }
+
+    }))
   }
   deleteHandler(id:number){
     console.log("deleting",id,"...");
-    console.log("remaining Products:\n",this.productService.deleteProduct(id))
-    this.products = this.productService.getAllProducts();
+    this.mySub1.push(this.productService.deleteProduct(id).subscribe({
+      next:(res)=>{
+        this.products.filter(product=>{
+          return product.id != id;
+        })
+      },
+      error:(err)=>{
+        console.log("Error deleting product", err);
+      }
+    }));    
+  }
+
+    ngOnDestroy(): void {
+      this.mySub1.forEach(sub => {
+        sub.unsubscribe();
+      });
   }
 
 }

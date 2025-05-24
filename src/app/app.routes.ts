@@ -5,8 +5,7 @@ import { ProductViewComponent } from '../components/products/view_p/view_p.compo
 import { ProductEditComponent } from '../components/products/edit/edit.component';
 import { ProductFormComponent } from '../components/products/form/form.component';
 import { NotFoundComponent } from '../components/not-found/not-found.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
+
 
 export const routes: Routes = [
     {
@@ -38,7 +37,5 @@ export const routes: Routes = [
     {
         path: '**',
         component: NotFoundComponent
-    },
-     { path: 'account/login', component: LoginComponent },
-  { path: 'account/register', component: RegisterComponent }
+    }
 ];

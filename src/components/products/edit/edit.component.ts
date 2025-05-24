@@ -4,30 +4,74 @@ import { StaticProductServiceService } from '../../../app/services/static-produc
 import { IProduct } from '../../../app/models/iproduct';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DynamicProductService } from '../../../app/services/dynamic-product.service';
 
 
 @Component({
-  selector: 'app-product-edit',
-  imports: [RouterLink,CommonModule,FormsModule],
-  templateUrl: './product-edit.component.html',
-  styleUrl: './product-edit.component.css'
+  selector: 'app-edit',
+  standalone: true,
+  imports: [RouterLink, CommonModule, FormsModule],
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.css'] // fixed typo: styleUrl -> styleUrls
 })
 export class ProductEditComponent implements OnInit {
-  currentProduct!:IProduct;
-constructor(private productService:StaticProductServiceService,private activateRoute:ActivatedRoute,private router:Router){}
+  currentProduct!: IProduct;
+  categories: string[] = [];
+
+  constructor(
+    private productService: DynamicProductService,
+    private activateRoute: ActivatedRoute,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
-    let productId = Number(this.activateRoute.snapshot.paramMap.get('id'));
-    let currentProduct = this.productService.getProductById(productId)
-    if(currentProduct){
-      this.currentProduct = currentProduct;
-    }
+    this.loadCategories();
+
+    this.activateRoute.paramMap.subscribe({
+      next: (params) => {
+        const productId = params.get('id');
+        if (productId) {
+          this.loadProductById(Number(productId));
+        }
+      }
+    });
   }
-editHandler(){
-  this.productService.updateProduct(this.currentProduct);
-  this.router.navigate(['/products',this.currentProduct.id])
+
   
-}
-getCategories(){
-  return this.productService.getAllCategories();
-}
+
+  loadProductById(id: number): void {
+    this.productService.getProductById(id).subscribe({
+      next: (res) => {
+        if (res) {
+          this.currentProduct = res;
+        }
+      },
+      error: (err) => {
+        console.error('Failed to load product:', err);
+      }
+    });
+  }
+
+  loadCategories(): void {
+    this.productService.getAllCategories().subscribe({
+      next: (res) => {
+        this.categories = res;
+      },
+      error: (err) => {
+        console.error('Failed to load categories:', err);
+      }
+    });
+  }
+
+  editHandler(): void {
+    this.productService.updateProduct(this.currentProduct).subscribe({
+      next: (res) => {
+        this.currentProduct = res;
+        this.router.navigate(['/products', this.currentProduct.id]);
+      },
+      error: (err) => {
+        console.error('Product update failed:', err);
+      }
+    });
+  }
 }

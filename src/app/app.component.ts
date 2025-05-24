@@ -17,5 +17,5 @@ import { ProductEditComponent } from "../components/products/edit/edit.component
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'lab4';
+  title = 'Ecommerce App';
 }

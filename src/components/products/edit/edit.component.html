@@ -1,99 +1,52 @@
-<section class="product-edit-card">
-  <div class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6">
-        <div class="card border-0 shadow-sm p-4">
+<!-- Edit Product Form Component -->
+<section class="content-card">
+    <h1 class="mb-4"><i class="bi bi-pencil-fill me-2"></i>Edit Product</h1>
+    @if(currentProduct){
 
-          <!-- Header -->
-          <h1 class="text-center mb-4 fw-bold">
-            <i class="bi bi-pencil-fill text-primary me-2"></i>Edit Product
-          </h1>
 
-          @if(currentProduct) {
-            <form #editForm="ngForm" (ngSubmit)="editHandler()">
-              
-              <!-- ID - Read Only -->
-              <div class="mb-3">
-                <label for="productId" class="form-label">
-                  <i class="bi bi-hash me-2"></i>ID
-                </label>
-                <input type="text" class="form-control" id="productId"
-                       [(ngModel)]="currentProduct.id" name="productid"
-                       readonly>
-              </div>
-
-              <!-- Name -->
-              <div class="mb-3">
-                <label for="productName" class="form-label">
-                  <i class="bi bi-tag-fill me-2"></i>Name
-                </label>
-                <input type="text" class="form-control" id="productName"
-                       [(ngModel)]="currentProduct.name" name="productname"
-                       placeholder="Enter product name" required>
-              </div>
-
-              <!-- Price -->
-              <div class="mb-3">
-                <label for="productPrice" class="form-label">
-                  <i class="bi bi-currency-dollar me-2"></i>Price
-                </label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text">
-                    <i class="bi bi-currency-dollar"></i>
-                  </span>
-                  <input type="number" class="form-control" id="productPrice"
-                         [(ngModel)]="currentProduct.price" name="productprice"
-                         placeholder="0.00" step="0.01" min="0" required>
-                </div>
-              </div>
-
-              <!-- Stock -->
-              <div class="mb-3">
-                <label for="productStock" class="form-label">
-                  <i class="bi bi-box-seam-fill me-2"></i>Stock
-                </label>
-                <input type="number" class="form-control" id="productStock"
-                       [(ngModel)]="currentProduct.stock" name="productstock"
-                       placeholder="Enter stock quantity" min="0" required>
-              </div>
-
-              <!-- Category -->
-              <div class="mb-3">
-                <label for="productCategory" class="form-label">
-                  <i class="bi bi-list-ul me-2"></i>Category
-                </label>
-                <select [(ngModel)]="currentProduct.category" name="productcategory"
-                        class="form-select" id="productCategory" required>
-                  <option value="" disabled selected>Select a category</option>
-                  @for (category of getCategories(); track category) {
-                    <option [value]="category">{{ category }}</option>
-                  }
-                </select>
-              </div>
-
-              <!-- Save & Cancel Buttons -->
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                <button [disabled]="!editForm.form.valid" type="submit" class="btn btn-primary px-4">
-                  <i class="bi bi-save me-2"></i>Save Changes
-                </button>
-                <a [routerLink]="['/products']" class="btn btn-outline-secondary px-4">
-                  <i class="bi bi-arrow-left-circle me-2"></i>Cancel
-                </a>
-              </div>
-
-            </form>
-          } @else {
-            <div class="text-center py-4">
-              <img src="https://cdn-icons-png.flaticon.com/512/995/995661.png " alt="Invalid Product" width="80" class="mb-3">
-              <h5 class="text-danger mb-3">Invalid Product ID</h5>
-              <a [routerLink]="['/products']" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left-circle me-2"></i>Back to Products
-              </a>
-            </div>
-          }
-
+    <form>
+        <div class="mb-3">
+            <label for="productId" class="form-label"><i class="bi bi-hash me-2"></i>ID</label>
+            <input type="text" class="form-control" id="productId" [(ngModel)]="currentProduct.id" name="productid"
+                readonly>
         </div>
-      </div>
-    </div>
-  </div>
+        <div class="mb-3">
+            <label for="productName" class="form-label"><i class="bi bi-tag-fill me-2"></i>Name</label>
+            <input type="text" class="form-control" id="productName" [(ngModel)]="currentProduct.name"
+                name="productname" placeholder="Enter product name" required>
+        </div>
+        <div class="mb-3">
+            <label for="productPrice" class="form-label"><i class="bi bi-currency-dollar me-2"></i>Price</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
+                <input type="number" class="form-control" id="productPrice" [(ngModel)]="currentProduct.price"
+                    name="productprice" placeholder="0.00" step="0.01" min="0" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="productStock" class="form-label"><i class="bi bi-box-seam-fill me-2"></i>Stock</label>
+            <input type="number" class="form-control" id="productStock" [(ngModel)]="currentProduct.stock"
+                name="productstock" placeholder="Enter stock quantity" min="0" required>
+        </div>
+        <div class="mb-3">
+            <label for="productCategory" class="form-label"><i class="bi bi-list-ul me-2"></i>Category</label>
+            <select [(ngModel)]="currentProduct.category" name="productcategory" class="form-select"
+                id="productCategory" required>
+                <option value="" disabled>Select a category</option>
+                @for (category of categories; track category) {
+                <option [value]="category">{{category}}</option>
+                }
+            </select>
+        </div>
+        <div class="d-flex justify-content-end gap-2">
+            <button (click)="editHandler()" type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Save
+                Changes</button>
+            <a [routerLink]="['/products','1']" class="btn btn-secondary"><i
+                    class="bi bi-arrow-left-circle me-2"></i>Cancel</a>
+        </div>
+    </form>
+    }@else {
+    <h1 class="text-danger">invalid product id.</h1>
+    <a [routerLink]="['/products','1']" class="btn btn-secondary"><i class="bi bi-arrow-left-circle me-2"></i>Cancel</a>
+    }
 </section>
