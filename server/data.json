@@ -1,0 +1,93 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Sarah Johnson"
+    },
+    {
+      "id": 2,
+      "name": "Ahmed Khalil"
+    },
+    {
+      "id": 3,
+      "name": "Lena Patel"
+    }
+  ],
+  "categories": [
+  { "id": 1, "name": "Books" },
+  { "id": 2, "name": "Pens" },
+  { "id": 3, "name": "Watches" }
+],
+  "products": [
+    {
+      "id": 1,
+      "name": "Luxury Fountain Pen",
+      "price": 49.99,
+      "stock": 150,
+      "category": "Pens"
+    },
+    {
+      "id": 2,
+      "name": "Stainless Steel Watch",
+      "price": 120.00,
+      "stock": 25,
+      "category": "Watches"
+    },
+    {
+      "id": 3,
+      "name": "Smart Study Planner",
+      "price": 15.75,
+      "stock": 200,
+      "category": "Books"
+    },
+    {
+      "id": 4,
+      "name": "Vintage Leather Journal",
+      "price": 22.50,
+      "stock": 87,
+      "category": "Books"
+    },
+    {
+      "id": 5,
+      "name": "Digital Sports Watch",
+      "price": 85.99,
+      "stock": 34,
+      "category": "Watches"
+    },
+    {
+      "id": 6,
+      "name": "Executive Ballpoint Pen",
+      "price": 10.49,
+      "stock": 300,
+      "category": "Pens"
+    },
+    {
+      "id": 7,
+      "name": "Classic Pocket Watch",
+      "price": 65.00,
+      "stock": 10,
+      "category": "Watches"
+    },
+    {
+      "id": 8,
+      "name": "Novel: The Timekeeper",
+      "price": 9.99,
+      "stock": 190,
+      "category": "Books"
+    },
+    {
+      "id": 9,
+      "name": "Highlighter Pen Set",
+      "price": 6.95,
+      "stock": 350,
+      "category": "Pens"
+    },
+    {
+      "id": 10,
+      "name": "Luxury Gold Watch",
+      "price": 250.00,
+      "stock": 8,
+      "category": "Watches"
+    }
+  ]
+}

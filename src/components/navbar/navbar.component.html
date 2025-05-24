@@ -1,21 +1,21 @@
-<!-- Navigation Bar -->
+
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
 
-    <!-- Brand/Logo -->
+    
     <a class="navbar-brand" [routerLink]="['/home']"><i class="bi bi-shield-check"></i> Store</a>
 
-    <!-- Toggler for mobile view -->
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Navbar Links & Search -->
+    
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <!-- Home Link -->
+        
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" aria-current="page"
             [routerLink]="['/home']">
@@ -23,7 +23,7 @@
           </a>
         </li>
 
-        <!-- Products Link -->
+        
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
             [routerLink]="['/products']">
@@ -31,7 +31,7 @@
           </a>
         </li>
 
-        <!-- Add Product Link -->
+        
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
             [routerLink]="['/products', 'create']">
@@ -39,21 +39,21 @@
           </a>
         </li>
 
-        <!-- Wishlist (New) -->
+        
         <li class="nav-item d-none d-lg-block">
           <a class="nav-link" href="#">
             <i class="bi bi-heart-fill text-warning"></i> Wishlist
           </a>
         </li>
 
-        <!-- Cart (Optional, placeholder) -->
+        
         <li class="nav-item d-none d-lg-block">
           <a class="nav-link" href="#">
             <i class="bi bi-cart-check-fill text-success"></i> Cart
           </a>
         </li>
 
-        <!-- Search Bar (Desktop Only) -->
+        
         <li class="nav-item ms-3 d-none d-lg-block">
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search products..." aria-label="Search">
@@ -62,7 +62,7 @@
         </li>
       </ul>
 
-      <!-- Account Dropdown -->
+      
       <ul class="navbar-nav ms-auto">
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" id="accountDropdown" role="button"
