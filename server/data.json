@@ -2,21 +2,28 @@
   "users": [
     {
       "id": 1,
-      "name": "Sarah Johnson"
+      "name": "Maha Galal"
     },
     {
       "id": 2,
-      "name": "Ahmed Khalil"
+      "name": "Lila Ali"
     },
     {
       "id": 3,
-      "name": "Lena Patel"
+      "name": "Ahmed Kareem"
+    },
+    {
+      "id": 4,
+      "name": "Yasser Ali"
     }
   ],
   "categories": [
-  { "id": 1, "name": "Books" },
+  { "id": 1, "name": "Clothes" },
   { "id": 2, "name": "Pens" },
-  { "id": 3, "name": "Watches" }
+  { "id": 3, "name": "Watches" },
+  { "id": 4, "name": "Electronics" },
+  { "id": 5, "name": "Shoes" },
+  { "id": 6, "name": "Books" }
 ],
   "products": [
     {
